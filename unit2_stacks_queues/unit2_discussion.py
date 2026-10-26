@@ -32,12 +32,17 @@ class Stack:
         # TODO (Student): Remove and return the most recently added value.
         # Improve or explain empty-stack handling.
         # What should happen if the stack is empty?
-        pass
+        if not self.stackList:
+            return "List is empty"
+        else:
+            return self.stackList.pop()
+
 
     def peek(self):
         # TODO (Student): Return the top value without removing it.
         # Add a comment explaining what peek does.
-        pass
+        self.stackList[-1]
+
 
     def is_empty(self):
         # TODO (Student): Return True if the stack has no values.
@@ -88,10 +93,15 @@ def main():
     # 7. Create a stack with only one item, remove it,
     #    and verify the stack is empty afterward.
 
+testStack = Stack()
+testStack.push(1)
+testStack.push(2)
+
+print(testStack.peek())
 
 print("\n=== STACK DEMO ===")
 print("TODO: Create a Stack object, demonstrate LIFO behavior,")
-print("      test popping from an empty stack,")
+print("      test popping from an empty stack: ", testStack.pop())
 print("      test peeking at an empty stack,")
 print("      and verify a single-item stack becomes empty after removal.")
 
