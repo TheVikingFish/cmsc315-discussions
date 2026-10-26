@@ -116,42 +116,55 @@ def main():
     # 7. Create a stack with only one item, remove it,
     #    and verify the stack is empty afterward.
 
-testStack = Stack()
-# testStack.push("item 1")
-# testStack.push("item 2")
-# testStack.push("item 3")
-# testStack.push("item 4")
+    print("\n=== STACK DEMO ===")
+    print("TODO: Create a Stack object, demonstrate LIFO behavior\n")
 
-print(testStack.peek())
-print(testStack.pop())
-print(testStack.peek())
+    testStack = Stack()
+    print("...testStack created from Stack() class...\n")
 
-print("\n=== STACK DEMO ===")
-print("TODO: Create a Stack object, demonstrate LIFO behavior,")
-print("      test popping from an empty stack: ")
-print("      test peeking at an empty stack,")
-print("      and verify a single-item stack becomes empty after removal.")
+    print("test popping from an empty stack: ")
+    print("    ", testStack.pop(), "\n")
 
-# ===============================
-# TODO (Student): QUEUE DEMO
-# ===============================
-# Requirements:
-# 1. Create a Queue object.
-# 2. Add at least 4 values to the queue.
-# 3. Improve the print statements so they clearly explain what is happening.
-# 4. Demonstrate FIFO behavior.
-# 5. Show what happens when dequeue() is used on an empty queue.
-#
-# Edge Cases:
-# 6. Show what happens when front() is used on an empty queue.
-# 7. Create a queue with only one item, remove it,
-#    and verify the queue is empty afterward.
+    print("test peeking at an empty stack:")
+    print("    ", testStack.peek(), "\n")
 
-# print("\n=== QUEUE DEMO ===")
-# print("TODO: Create a Queue object, demonstrate FIFO behavior,")
-# print("      test dequeuing from an empty queue,")
-# print("      test viewing the front of an empty queue,")
-# print("      and verify a single-item queue becomes empty after removal.")
+    testStack.push("list_item_1")
+    testStack.push("list_item_2")
+    testStack.push("list_item_3")
+    testStack.push("list_item_4")
+    print("...4 items added to testStack...")
+    print("the last item in the list is:", testStack.peek())
+    print("pop() returns:", testStack.pop())
+    print("last in first out successful\n")
+
+    print("verify a single-item stack becomes empty after removal:")
+    testStack2 = Stack()
+    print("...testStack2 created...")
+    testStack2.push("list2_item_1")
+    print("...1 item added to testStack2..")
+    print("    pop():", testStack2.pop())
+    print("   ", testStack2.peek())
+
+    # ===============================
+    # TODO (Student): QUEUE DEMO
+    # ===============================
+    # Requirements:
+    # 1. Create a Queue object.
+    # 2. Add at least 4 values to the queue.
+    # 3. Improve the print statements so they clearly explain what is happening.
+    # 4. Demonstrate FIFO behavior.
+    # 5. Show what happens when dequeue() is used on an empty queue.
+    #
+    # Edge Cases:
+    # 6. Show what happens when front() is used on an empty queue.
+    # 7. Create a queue with only one item, remove it,
+    #    and verify the queue is empty afterward.
+
+    print("\n=== QUEUE DEMO ===")
+    # print("TODO: Create a Queue object, demonstrate FIFO behavior,")
+    # print("      test dequeuing from an empty queue,")
+    # print("      test viewing the front of an empty queue,")
+    # print("      and verify a single-item queue becomes empty after removal.")
 
 if __name__ == "__main__":
     main()
