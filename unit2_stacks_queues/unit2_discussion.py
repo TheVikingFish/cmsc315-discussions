@@ -33,7 +33,7 @@ class Stack:
         # Improve or explain empty-stack handling.
         # What should happen if the stack is empty?
         if not self.stackList:
-            return "List is empty"
+            return "pop(): List is empty"
         else:
             return self.stackList.pop()
 
@@ -41,7 +41,10 @@ class Stack:
     def peek(self):
         # TODO (Student): Return the top value without removing it.
         # Add a comment explaining what peek does.
-        self.stackList[-1]
+        if not self.stackList:
+            return "peek(): List is empty"
+        else:
+            return self.stackList[-1]
 
 
     def is_empty(self):
@@ -94,14 +97,18 @@ def main():
     #    and verify the stack is empty afterward.
 
 testStack = Stack()
-testStack.push(1)
-testStack.push(2)
+# testStack.push("item 1")
+# testStack.push("item 2")
+# testStack.push("item 3")
+# testStack.push("item 4")
 
+print(testStack.peek())
+print(testStack.pop())
 print(testStack.peek())
 
 print("\n=== STACK DEMO ===")
 print("TODO: Create a Stack object, demonstrate LIFO behavior,")
-print("      test popping from an empty stack: ", testStack.pop())
+print("      test popping from an empty stack: ")
 print("      test peeking at an empty stack,")
 print("      and verify a single-item stack becomes empty after removal.")
 
