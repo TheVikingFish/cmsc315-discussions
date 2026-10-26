@@ -18,64 +18,84 @@ class Stack:
     def __init__(self):
         # TODO (Student): Create the internal data structure for the stack.
         # Hint: A Python list can be used to store stack values.
-        self.stackList = []
+        self._stackList = []
 
 
     def push(self, value):
         # TODO (Student): Add value to the stack.
         # Add a short comment explaining why this operation supports LIFO behavior.
         #append adds the value to the end of the list, aka the top, and pop interacts with the last/top item
-        self.stackList.append(value)
+        self._stackList.append(value)
 
 
     def pop(self):
         # TODO (Student): Remove and return the most recently added value.
         # Improve or explain empty-stack handling.
         # What should happen if the stack is empty?
-        if not self.stackList:
+        # the list object itself will return true if not empty and false if it is empty, this allows a quick
+        # check with an if statement that returns a string with a message instead of an error if empty
+        if not self._stackList:
             return "pop(): List is empty"
         else:
-            return self.stackList.pop()
+            return self._stackList.pop()
 
 
     def peek(self):
         # TODO (Student): Return the top value without removing it.
         # Add a comment explaining what peek does.
-        if not self.stackList:
+        # peek returns a string with a warning if the list is empty, and returns the top item/last item if the list is
+        # not empty
+        if not self._stackList:
             return "peek(): List is empty"
         else:
-            return self.stackList[-1]
+            return self._stackList[-1]
 
 
     def is_empty(self):
         # TODO (Student): Return True if the stack has no values.
-        pass
+        if not self._stackList:
+            return True
+        else:
+            return False
 
 
 class Queue:
     def __init__(self):
         # TODO (Student): Create the internal data structure for the queue.
         # Hint: collections.deque is useful for efficient queue operations.
-        pass
+        self._queueList = deque()
 
     def enqueue(self, value):
         # TODO (Student): Add value to the back of the queue.
         # Add a short comment explaining why this operation supports FIFO behavior.
-        pass
+        #the append() method adds a value to the end/back of the deque, this means the first item added will remain
+        # at the front
+        self._queueList.append(value)
 
     def dequeue(self):
         # TODO (Student): Remove and return the value from the front of the queue.
         # Explain or improve empty-queue handling.
-        pass
+        # the deque object returns false if empty, this if will return a warning message in that case
+        if not self._queueList:
+            return "pop(): deque is empty"
+        else:
+            return self._queueList.pop()
 
     def front(self):
         # TODO (Student): Return the front value without removing it.
         # Add a comment explaining what front returns.
-        pass
+        # if the deque is not empty then front returns index 0 of the deque, which is always the first item
+        if not self._queueList:
+            return "front(): deque is empty"
+        else:
+            return self._queueList[0]
 
     def is_empty(self):
         # TODO (Student): Return True if the queue has no values.
-        pass
+        if not self._queueList:
+            return True
+        else:
+            return False
 
 
 def main():
