@@ -18,12 +18,15 @@ class Stack:
     def __init__(self):
         # TODO (Student): Create the internal data structure for the stack.
         # Hint: A Python list can be used to store stack values.
-        pass
+        self.stackList = []
+
 
     def push(self, value):
         # TODO (Student): Add value to the stack.
         # Add a short comment explaining why this operation supports LIFO behavior.
-        pass
+        #append adds the value to the end of the list, aka the top, and pop interacts with the last/top item
+        self.stackList.append(value)
+
 
     def pop(self):
         # TODO (Student): Remove and return the most recently added value.
@@ -107,11 +110,11 @@ print("      and verify a single-item stack becomes empty after removal.")
 # 7. Create a queue with only one item, remove it,
 #    and verify the queue is empty afterward.
 
-print("\n=== QUEUE DEMO ===")
-print("TODO: Create a Queue object, demonstrate FIFO behavior,")
-print("      test dequeuing from an empty queue,")
-print("      test viewing the front of an empty queue,")
-print("      and verify a single-item queue becomes empty after removal.")
+# print("\n=== QUEUE DEMO ===")
+# print("TODO: Create a Queue object, demonstrate FIFO behavior,")
+# print("      test dequeuing from an empty queue,")
+# print("      test viewing the front of an empty queue,")
+# print("      and verify a single-item queue becomes empty after removal.")
 
 if __name__ == "__main__":
     main()
