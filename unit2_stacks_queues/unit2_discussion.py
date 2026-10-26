@@ -118,7 +118,6 @@ def main():
     #    and verify the stack is empty afterward.
 
     print("\n=== STACK DEMO ===")
-    print("TODO: Create a Stack object, demonstrate LIFO behavior\n")
 
     print("Create a Stack object:")
     testStack = Stack()
@@ -134,7 +133,10 @@ def main():
     print("Demonstrate LIFO behavior:")
     print("    the last item in the list is:", testStack.peek())
     print("    pop() returns:", testStack.pop())
-    print("    last in first out successful\n")
+    print("    pop() returns:", testStack.pop())
+    print("    pop() returns:", testStack.pop())
+    print("    pop() returns:", testStack.pop())
+    print("    ")
 
     print("Show what happens when pop() is used on an empty stack: ")
     testStack2 = Stack()
@@ -148,7 +150,7 @@ def main():
     testStack2.push("list2_item_1")
     print("    list2_item_1 added to testStack2...")
     print("    pop():", testStack2.pop())
-    print("   ", testStack2.peek())
+    print("    is_empty() returns:", testStack2.is_empty())
 
     # ===============================
     # TODO (Student): QUEUE DEMO
@@ -166,7 +168,6 @@ def main():
     #    and verify the queue is empty afterward.
 
     print("\n=== QUEUE DEMO ===")
-    print("TODO: Create a Queue object, demonstrate FIFO behavior\n")
 
     print("Create a Queue object:")
     testQueue = Queue()
@@ -182,7 +183,10 @@ def main():
     print("demonstrate FIFO behavior:")
     print("    the first item in the queue is:", testQueue.front())
     print("    dequeue() returns:", testQueue.dequeue())
-    print("    first in first out successful\n")
+    print("    dequeue() returns:", testQueue.dequeue())
+    print("    dequeue() returns:", testQueue.dequeue())
+    print("    dequeue() returns:", testQueue.dequeue())
+    print("    ")
 
     print("Show what happens when dequeue() is used on an empty queue:")
     testQueue2 = Queue()
@@ -196,7 +200,7 @@ def main():
     testQueue2.enqueue("queue2_item_1")
     print("    value queue2_item_1 added to testQueue2")
     print("    dequeue() returns:", testQueue2.dequeue())
-    print("    is_empty() returns: ", testQueue2.is_empty())
+    print("    is_empty() returns:", testQueue2.is_empty())
 
 if __name__ == "__main__":
     main()
