@@ -25,34 +25,30 @@ def insert_at(lst, index, value):
 
 
 def delete_at(lst, index):
-    """
-    TODO (Student):
-    Remove and return the value at the specified index.
-
-    Requirements:
-    - Validate that the index exists.
-    - Return the removed value.
-    - Return None if the index is invalid.
-    - Add comments explaining why index validation and safe deletion are important.
-    """
+    #index validation is important to allow the app to 'fail gracefully' instead of throwing an error
+    #safe deletion is important to make sure that only the intended value is being removed
     if not 0 <= index < len(lst):
         return None
     return lst.pop(index)
 
 def search_value(lst, value):
-    """
-    TODO (Student):
-    Search for a value within the list.
-
-    Requirements:
-    - Return the index if the value is found.
-    - Return -1 if the value is not found.
-    - Add comments explaining why this is a linear search and why it scans sequentially.
-    """
+    #using the .index() method is a linear search that scans sequentially because it takes the search value and
+    #starting from the first value in the list, compares to every value in the list in order until it reaches the
+    #first match
     try:
         return lst.index(value)
     except ValueError:
         return -1
+
+def search_results(lst, search_term):
+    #I created this function in order to meet the requirement of "Display the search results with clear explanations."
+    #while still meeting the requirement that the search_value function return -1 if value not found
+    #this function takes the return of search_value and provides a user-readable output
+    result = search_value(lst, search_term)
+    if result == -1:
+        return f"'{search_term}' not found, result: {result}"
+    return f"'{search_term}' found at index: {result}"
+
 
 
 def main():
@@ -66,50 +62,35 @@ def main():
     # 3. Test insertion at:
     #   -the beginning
     insert_at(tripOrder, 0, "France")
-    print(tripOrder)
+    print(tripOrder)                                        # 4. Display the list after each insertion.
     #    - the middle
     insert_at(tripOrder, 3, "Slovenia")
-    print(tripOrder)
+    print(tripOrder)                                        # 4. Display the list after each insertion.
     #    - the end
     insert_at(tripOrder, len(tripOrder), "Poland")
-    print(tripOrder)
+    print(tripOrder)                                        # 4. Display the list after each insertion.
 
-
-
-    # ===============================
-    # TODO (Student): DELETION TESTS
-    # ===============================
-    #
-    # Requirements:
-    # 1. Delete an item from:
-    #    - the beginning
-    #    - the middle
-    #    - the end
-    # 2. Display the removed value.
-    # 3. Display the updated list after each deletion.
-    # 4. Use comments to clearly explain what is happening in the output.
 
     print("\n=== DELETION TESTS ===")
-    print("TODO: Demonstrate deletions from multiple positions.")
+    # 1. Delete an item from:
+    #    - the beginning
+    print(delete_at(tripOrder, 0))  # 2. Display the removed value.
+    print(tripOrder)                      # 3. Display the updated list after each deletion.
+    #    - the middle
+    print(delete_at(tripOrder, 3))  # 2. Display the removed value.
+    print(tripOrder)                      # 3. Display the updated list after each deletion.
+    #    - the end
+    print(delete_at(tripOrder, len(tripOrder)-1))  # 2. Display the removed value.
+    print(tripOrder)                      # 3. Display the updated list after each deletion.
 
-    print(delete_at(tripOrder, -1))
-
-
-
-    # ===============================
-    # TODO (Student): SEARCH TESTS
-    # ===============================
-    #
-    # Requirements:
-    # 1. Search for a value that exists.
-    # 2. Search for a value that does not exist.
-    # 3. Display the search results with clear explanations.
-    # 4. Use comments to explain each step.
 
     print("\n=== SEARCH TESTS ===")
-    print("TODO: Demonstrate searching for values.")
-
-    print(search_value(tripOrder, "Germany"))
+    #I created the search_results() function to meet the requirements of both the search_value() function and
+    #the requirements of this search test section. search_results() calls search_value() to provide the index
+    # 1. Search for a value that exists.
+    print(search_results(tripOrder, "Austria"))# 3. Display the search results with clear explanations.
+    # 2. Search for a value that does not exist.
+    print(search_results(tripOrder, "England"))# 3. Display the search results with clear explanations.
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -125,8 +106,14 @@ def main():
     # - Use comments to explain each edge case.
 
     print("\n=== EDGE CASES ===")
-    print("TODO: Demonstrate at least two edge cases.")
+    print("Searching with a Null value:")
 
+    print(search_results(tripOrder, Null)) # search with null search term
+
+    #delete from an empty list
+    print("\nAttempt delete from an empty list:")
+    test_list = []                         #create an empty list
+    print(delete_at(test_list, 1))   #attempt to delete from index 1 of the empty list
 
 
 if __name__ == "__main__":
