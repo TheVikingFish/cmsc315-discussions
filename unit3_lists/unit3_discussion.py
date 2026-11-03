@@ -11,18 +11,16 @@ shift elements in memory and how different operations impact performance.
 
 
 def insert_at(lst, index, value):
-    """
-    TODO (Student):
-    Insert a value into the list at the specified index.
-
-    Requirements:
-    - Use a list operation to insert the value.
-    - Add comments explaining what happens to existing elements
-      after an insertion occurs.
-    - Use comments to explain how insertion performance may vary depending on
-      where the insertion occurs.
-    """
-    pass
+    #this method inserts a value at the specified index of a list
+    #insert at index 0 will insert the value at the beginning of the list, which requires all other
+    #items after it to be moved to the 'right' in the list. The speed of this operation is O(n), and will
+    #become increasingly slower as the list becomes longer.
+    #inserting at an index in the middle will work the same, shifting all elements behind the index
+    #to the right.
+    #to insert a value at the end of the list with the insert method requires the use of len() to get the
+    #number of the last index in the list. This is a O(1) operation, despite the fact that len() must
+    #be used to calculate the index.
+    lst.insert(index, value)
 
 
 def delete_at(lst, index):
@@ -36,8 +34,9 @@ def delete_at(lst, index):
     - Return None if the index is invalid.
     - Add comments explaining why index validation and safe deletion are important.
     """
-    pass
-
+    if -1 > index > len(lst):
+        return None
+    return lst.pop(index)
 
 def search_value(lst, value):
     """
@@ -49,28 +48,27 @@ def search_value(lst, value):
     - Return -1 if the value is not found.
     - Add comments explaining why this is a linear search and why it scans sequentially.
     """
-    pass
+    return lst.index(value)
 
 
 def main():
     print("=== UNIT 3: LIST OPERATIONS ===")
 
-    # ===============================
-    # TODO (Student): INSERTION TESTS
-    # ===============================
-    #
-    # Requirements:
-    # 1. Create a list containing several values.
-    # 2. Display the original list.
-    # 3. Test insertion at:
-    #    - the beginning
-    #    - the middle
-    #    - the end
-    # 4. Display the list after each insertion.
-    # 5. Use comments to explain each step in the implementation.
-
     print("\n=== INSERTION TESTS ===")
-    print("TODO: Create a list and demonstrate insertions.")
+    # 1. Create a list containing several values.
+    tripOrder = ["Germany", "Switzerland", "Italy", "Austria", "Czechia"]
+    # 2. Display the original list.
+    print(tripOrder)
+    # 3. Test insertion at:
+    #   -the beginning
+    insert_at(tripOrder, 0, "France")
+    print(tripOrder)
+    #    - the middle
+    insert_at(tripOrder, 3, "Slovenia")
+    print(tripOrder)
+    #    - the end
+    insert_at(tripOrder, len(tripOrder), "Poland")
+    print(tripOrder)
 
     # ===============================
     # TODO (Student): DELETION TESTS
@@ -88,6 +86,10 @@ def main():
     print("\n=== DELETION TESTS ===")
     print("TODO: Demonstrate deletions from multiple positions.")
 
+    print(delete_at(tripOrder, -11))
+
+
+
     # ===============================
     # TODO (Student): SEARCH TESTS
     # ===============================
@@ -100,6 +102,8 @@ def main():
 
     print("\n=== SEARCH TESTS ===")
     print("TODO: Demonstrate searching for values.")
+
+
 
     # ===============================
     # TODO (Student): EDGE CASES
