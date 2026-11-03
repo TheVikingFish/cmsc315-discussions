@@ -8,18 +8,19 @@ This assignment focuses on understanding how lists behave when elements
 are inserted, removed, and searched. You will analyze how Python lists
 shift elements in memory and how different operations impact performance.
 """
+from xxlimited_35 import Null
 
 
 def insert_at(lst, index, value):
-    #this method inserts a value at the specified index of a list
+    #this function inserts a value at the specified index of a list
     #insert at index 0 will insert the value at the beginning of the list, which requires all other
     #items after it to be moved to the 'right' in the list. The speed of this operation is O(n), and will
     #become increasingly slower as the list becomes longer.
-    #inserting at an index in the middle will work the same, shifting all elements behind the index
+    #inserting at an index in the middle will work the same, shifting all elements at and after the index
     #to the right.
     #to insert a value at the end of the list with the insert method requires the use of len() to get the
-    #number of the last index in the list. This is a O(1) operation, despite the fact that len() must
-    #be used to calculate the index.
+    #number after the last index in the list. This is an O(1) operation because nothing has to shift, and
+    #the use of len() is also O(1) because python lists store their length.
     lst.insert(index, value)
 
 
@@ -34,7 +35,7 @@ def delete_at(lst, index):
     - Return None if the index is invalid.
     - Add comments explaining why index validation and safe deletion are important.
     """
-    if -1 > index > len(lst):
+    if not 0 <= index < len(lst):
         return None
     return lst.pop(index)
 
@@ -48,7 +49,10 @@ def search_value(lst, value):
     - Return -1 if the value is not found.
     - Add comments explaining why this is a linear search and why it scans sequentially.
     """
-    return lst.index(value)
+    try:
+        return lst.index(value)
+    except ValueError:
+        return -1
 
 
 def main():
@@ -70,6 +74,8 @@ def main():
     insert_at(tripOrder, len(tripOrder), "Poland")
     print(tripOrder)
 
+
+
     # ===============================
     # TODO (Student): DELETION TESTS
     # ===============================
@@ -86,7 +92,7 @@ def main():
     print("\n=== DELETION TESTS ===")
     print("TODO: Demonstrate deletions from multiple positions.")
 
-    print(delete_at(tripOrder, -11))
+    print(delete_at(tripOrder, -1))
 
 
 
@@ -103,7 +109,7 @@ def main():
     print("\n=== SEARCH TESTS ===")
     print("TODO: Demonstrate searching for values.")
 
-
+    print(search_value(tripOrder, "Germany"))
 
     # ===============================
     # TODO (Student): EDGE CASES
