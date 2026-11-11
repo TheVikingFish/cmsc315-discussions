@@ -11,33 +11,25 @@ You will complete and modify the provided code while explaining
 key concepts in your own words using comments and output.
 """
 
-
 class Node:
     def __init__(self, value):
-        # TODO (Student):
-        # Store the node's value and initialize references
-        # to the left and right child nodes.
-        pass
+        self.key = value  # value of the node itself
+        self.left = None    # left child node initialized with None for easy comparison
+        self.right = None   # right child node initialized with None for easy comparison
 
 
 class BST:
     def __init__(self):
-        # TODO (Student):
-        # Initialize an empty Binary Search Tree.
-        pass
+        self.root = None    # create the root property for the tree structure
 
     def insert(self, value):
-        """
-        TODO (Student):
-        Insert a value into the BST.
-
-        Requirements:
-        - Use the recursive helper method.
-        - Add comments explaining why insertion depends on
-          whether a value is smaller or larger than the
-          current node.
-        """
-        pass
+        # if root has no value then set the node to the root position
+        if self.root is None:
+            self.root = Node(value)
+            return self.root
+        else:
+            # if root is already occupied find the next available position with _insert_recursive
+            return self._insert_recursive(self.root, value)
 
     def _insert_recursive(self, node, value):
         """
@@ -50,7 +42,22 @@ class BST:
         - Insert larger values into the right subtree.
         - Return the updated node reference.
         """
-        pass
+
+        if value < node.key:
+            if node.left is None:
+                node.left = Node(value)
+                return node.left
+            else:
+                return self._insert_recursive(node.left, value)
+
+        elif value > node.key:
+            if node.right is None:
+                node.right = Node(value)
+                return node.right
+            else:
+                return self._insert_recursive(node.right, value)
+        else:
+            return None
 
     def search(self, value):
         """
@@ -112,6 +119,13 @@ def main():
 
     print("\n=== TREE CONSTRUCTION ===")
     print("TODO: Create a BST and insert multiple values.")
+
+    test_tree = BST()
+
+    test_values = [50, 49, 51, 53, 52, 54, 25, 26]
+    for test_value in test_values:
+        print(test_tree.insert(test_value))
+
 
     # ===============================
     # TODO (Student): IN-ORDER TRAVERSAL
