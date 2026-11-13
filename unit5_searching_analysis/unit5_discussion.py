@@ -26,7 +26,10 @@ def linear_search(lst, target):
     - Add comments explaining why linear search
       has O(n) time complexity.
     """
-    pass
+    for index, value in enumerate(lst) :
+        if value == target :
+            return index
+    return -1
 
 
 def binary_search(lst, target):
@@ -42,7 +45,18 @@ def binary_search(lst, target):
     - Add comments explaining how each iteration
       reduces the search space.
     """
-    pass
+    low = 0
+    high = len(lst) - 1
+
+    while high >= low :
+        mid = (high +low) // 2
+        if lst[mid] < target :
+            low = mid + 1
+        elif lst[mid] > target :
+            high = mid - 1
+        else :
+            return mid
+    return -1
 
 
 def main():
@@ -61,7 +75,11 @@ def main():
     # 4. Use comments to clearly explain the results.
 
     print("\n=== SMALL DATASET TEST ===")
-    print("TODO: Create a small dataset and test both searches.")
+
+    small_set = [10, 20, 30, 40, 50]
+    print(linear_search(small_set, 20))
+    print(linear_search(small_set, 100))
+
 
     # ===============================
     # TODO (Student): LARGE DATASET
@@ -75,7 +93,11 @@ def main():
     #    efficient as datasets grow larger.
 
     print("\n=== LARGE DATASET TEST ===")
-    print("TODO: Create a larger dataset and compare results.")
+
+    large_set = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 31, 32, 33, 34, 35, 36, 37, 38, 39, 51, 52, 53, 54, 55, 56, 57]
+    print(linear_search(large_set, 51))
+    print(linear_search(large_set, 16))
+    print(linear_search(large_set, 40))
 
     # ===============================
     # TODO (Student): EDGE CASES
