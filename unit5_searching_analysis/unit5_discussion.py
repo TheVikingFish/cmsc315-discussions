@@ -26,10 +26,16 @@ def linear_search(lst, target):
     - Add comments explaining why linear search
       has O(n) time complexity.
     """
+    linear_count = 0                        # this is for counting the number of loops so that I can compare the
+
+    if target is None :                     # if target is None return -1 for the index and 0 for loop count
+        return -1, 0
+                                            # efficiency of linear search to binary search
     for index, value in enumerate(lst) :
+        linear_count = linear_count + 1     # loop count is incremented each time the loop runs
         if value == target :
-            return index
-    return -1
+            return index, linear_count      # the index and loop count are returned as a tuple
+    return -1, linear_count                 # if the target is not found then return -1 and the loop count
 
 
 def binary_search(lst, target):
@@ -45,18 +51,25 @@ def binary_search(lst, target):
     - Add comments explaining how each iteration
       reduces the search space.
     """
+
+    binary_count = 0                        # this is for counting the number of loops so that I can compare the
+                                            # efficiency of linear search to binary search
     low = 0
     high = len(lst) - 1
 
+    if target is None :                     # if target is None return -1 for the index and 0 for loop count
+        return -1, 0
+
     while high >= low :
+        binary_count = binary_count + 1     #loop count is incremented each time the loop runs
         mid = (high +low) // 2
         if lst[mid] < target :
             low = mid + 1
         elif lst[mid] > target :
             high = mid - 1
         else :
-            return mid
-    return -1
+            return mid, binary_count        # the index and loop count are returned as a tuple
+    return -1, binary_count                 # if the target is not found then return -1 and the loop count
 
 
 def main():
@@ -76,9 +89,38 @@ def main():
 
     print("\n=== SMALL DATASET TEST ===")
 
-    small_set = [10, 20, 30, 40, 50]
-    print(linear_search(small_set, 20))
-    print(linear_search(small_set, 100))
+    small_set = [10, 20, 30, 40, 50, 60, 70]
+    print(f"Dataset: {small_set}")
+
+    #linear search results
+    print("\nLinear Search Results:")
+
+    target = 50
+    search_index, loop_count = linear_search(small_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    target = 100
+    search_index, loop_count = linear_search(small_set, target)
+    print(f"\nSearch Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    #binary search results
+    print("\nBinary Search Results:")
+    target = 50
+    search_index, loop_count = binary_search(small_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    target = 100
+    search_index, loop_count = binary_search(small_set, target)
+    print(f"\nSearch Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
 
 
     # ===============================
@@ -92,12 +134,40 @@ def main():
     # 4. Use comments to explain why binary search becomes more
     #    efficient as datasets grow larger.
 
-    print("\n=== LARGE DATASET TEST ===")
+    print("\n\n=== LARGE DATASET TEST ===")
 
     large_set = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 31, 32, 33, 34, 35, 36, 37, 38, 39, 51, 52, 53, 54, 55, 56, 57]
-    print(linear_search(large_set, 51))
-    print(linear_search(large_set, 16))
-    print(linear_search(large_set, 40))
+    print(f"Dataset: {large_set}")
+
+    print("\nLinear Search Results:")
+
+    target = 16
+    search_index, loop_count = linear_search(large_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    target = 100
+    search_index, loop_count = linear_search(large_set, target)
+    print(f"\nSearch Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    #binary search results
+    print("\nBinary Search Results:")
+    target = 16
+    search_index, loop_count = binary_search(large_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    target = 100
+    search_index, loop_count = binary_search(large_set, target)
+    print(f"\nSearch Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+
 
     # ===============================
     # TODO (Student): EDGE CASES
@@ -114,8 +184,61 @@ def main():
     #
     # Explain what happens in each case.
 
-    print("\n=== EDGE CASE TESTS ===")
-    print("TODO: Demonstrate and explain edge cases.")
+    print("\n\n=== EDGE CASE TESTS ===")
+
+    print("\nLinear Search of an Empty List:")
+    test_set = []
+    print(f"Dataset: {test_set}")
+    target = 10
+    search_index, loop_count = linear_search(test_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    print("\nBinary Search of an Empty List:")
+    test_set = []
+    print(f"Dataset: {test_set}")
+    target = 10
+    search_index, loop_count = binary_search(test_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    print("\nLinear Search with a Null Target:")
+    test_set = [10, 20, 30, 40, 50, 60, 70]
+    print(f"Dataset: {test_set}")
+    target = None
+    search_index, loop_count = linear_search(test_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    print("\nBinary Search with a Null Target:")
+    test_set = [10, 20 , 30, 40, 50, 60, 70]
+    print(f"Dataset: {test_set}")
+    target = None
+    search_index, loop_count = binary_search(test_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    print("\nLinear Search with a single item list:")
+    test_set = [10]
+    print(f"Dataset: {test_set}")
+    target = 10
+    search_index, loop_count = linear_search(test_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
+
+    print("\nBinary Search with a single item list:")
+    test_set = [10]
+    print(f"Dataset: {test_set}")
+    target = 10
+    search_index, loop_count = binary_search(test_set, target)
+    print(f"Search Target: {target}")
+    print(f"Index: {search_index}")
+    print(f"Number of loops: {loop_count}")
 
 
 if __name__ == "__main__":
