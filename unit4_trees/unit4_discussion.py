@@ -32,16 +32,6 @@ class BST:
             return self._insert_recursive(self.root, value)
 
     def _insert_recursive(self, node, value):
-        """
-        TODO (Student):
-        Implement recursive BST insertion.
-
-        Requirements:
-        - Create a new node when a position is found.
-        - Insert smaller values into the left subtree.
-        - Insert larger values into the right subtree.
-        - Return the updated node reference.
-        """
 
         if value < node.key:
             if node.left is None:
@@ -124,7 +114,8 @@ def main():
 
     test_values = [50, 49, 51, 53, 52, 54, 25, 26]
     for test_value in test_values:
-        print(test_tree.insert(test_value))
+        result = test_tree.insert(test_value)
+        print(result.key)
 
 
     # ===============================
